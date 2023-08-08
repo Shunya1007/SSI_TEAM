@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class SsiTeamApplication {
 
-	//こんにちは！
+	//こんにちは！aaaa
 	public static void main(String[] args) {
 		SpringApplication.run(SsiTeamApplication.class, args);
 	}
