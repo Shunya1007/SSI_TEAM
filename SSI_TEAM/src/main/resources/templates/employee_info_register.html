@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+ <title>社員情報フォーム</title>
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+    <h1>社員情報</h1>
+    <form>
+        <label for="EMPLOYEE_ID">社員ID:</label>
+       <input type="text" id="EMPLOYEE_ID" name="EMPLOYEE_ID" value="" readonly><br><br>
+
+        <label for="PASSWORD">パスワード:</label>
+        <input type="PASSWORD" id="PASSWORD" name="PASSWORD"><br><br>
+
+        <label for="EMPLOYEE_NAME">社員名:</label>
+        <input type="text" id="EMPLOYEE_NAME" name="EMPLOYEE_NAME"><br><br>
+
+        <label for="DEPT_NAME">所属:</label>
+        <input type="text" id="DEPT_NAME" name="DEPT_NAME"><br><br>
+
+        <label for="SEX_NAME">性別:</label>
+        <select id="SEX_NAME" name="SEX_NAME">
+            <option value="male">男性</option>
+            <option value="female">女性</option>
+            <option value="none">未確認</option>
+        </select><br><br>
+
+        <label for="TEL_NO">電話番号:</label>
+        <input type="text" id="TEL_NO" name="TEL_NO"><br><br>
+
+        <label for="NYUSHA_DATE">入社年月日:</label>
+        <input type="text" id="NYUSHA_DATE" name="NYUSHA_DATE"><br><br>
+
+        <label for="AGE">年齢:</label>
+        <input type="number" id="AGE" name="AGE"><br><br>
+
+        <label for="MAIL_ADDRESS">メールアドレス:</label>
+        <input type="MAIL_ADDRESS" id="MAIL_ADDRESS" name="MAIL_ADDRESS"><br><br>
+
+        <button type="submit">登録</button>
+        <button type="button" id="updateButton">更新</button>
+        <button type="button" id="closeButton">閉じる</button>
+    </form>
+
+<script>
+    $(document).ready(function() {
+        // 入社年月日のDatepickerを初期化
+        $("#hireDate").datepicker({
+            dateFormat: "yy/mm/dd",  // 日付の表示形式
+            changeMonth: true,      // 月の選択を表示
+            changeYear: true,      // 年の選択を表示
+            maxDate: 0,  // 未来の日付を選択できないようにする
+            minDate: new Date(2022, 0, 1)  // 最小日付を2022年1月1日に設定
+        });
+    });
+</script>
+</body>
+</html>
