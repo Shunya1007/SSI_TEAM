@@ -1,8 +1,12 @@
 <!DOCTYPE html>
-<html>
+
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>社員情報一覧</title>
+ <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
 <form action="/employee/search" method="POST">
@@ -13,18 +17,23 @@
 				<li class="width_74P"><input type="text" name="employeeId" maxlength = "10" placeholder="社員IDを入力してください"  th:value="${employeeId}"></li>
 			</ul>
 			<ul class="ulList_01">
-				<li><label>更新日時</label></li>
+				<li><label>入社年月日</label></li>
 				<li class="width_74P"><input id="width_42P" type="text" name="nyushaDateS" th:value="${nyushaDateS}" maxlength = "20" placeholder="YYYY/MM/DD" required> ~ <input id="width_42P" type="text" name="nyushaDateE" th:value="${nyushaDateE}" maxlength = "20" placeholder="YYYY/MM/DD" required></li>
 			</ul>
 		</div>
 		<div class="width_33P">
 			<ul class="ulList_01">
-				<li class="padding_L_1rem"><label>所属</label></li>
+				<li><label>所属</label></li>
 				<li class="width_74P">
-					<select name="choice"  >
-						<option value="1"  >あり （在庫がある場合）</option>
-						<option value="2"  >なし （在庫がない場合）</option>
-					</select>
+					<select>
+            			<option value=""></option>
+            			<option
+                			th:each="dept : ${deptList}"
+                			th:value="${dept.deptId}"
+                			th:text="${dept.deptName}"
+                			th:selected="${dept.deptId == selectedValue}">
+            			</option>
+        			</select>
 				</li>
 			</ul>
 			<ul class="ulList_01">
@@ -40,8 +49,7 @@
 			<ul class="ulList_01">
 				<li>&nbsp;</li>
 				<li class="display_flex padding_0">
-					<div><a href="#"><input class="button" type="submit" value="検索" /></a></div>
-					<div><a href="#"><input class="button" type="submit" value="閉じる"  onclick="history.back();"/></a></div>
+					<div><><input class="button" type="submit" value="検索" /></div>
 				</li>
 				<!-- <li class="width_74P"><input class="width_100P" type="text" name="address" maxlength = "10"></li> -->
 			</ul>
@@ -49,103 +57,50 @@
 	</div>
 </form> 
 <div class="display_flex">
-	<div><a href="#"><input class="button" type="submit" value="追加" /></a></div>
+	<div><a th:href="@{/employee/add}" class="btn btn-primary"></a></div>
 	<div><input class="button" type="button" value="削除"  onclick = "deleteInfo()" /></div>
+	<div><a href="#"><input class="button" type="submit" value="閉じる"  onclick="history.back();"/></a></div>
+	
 </div>
 
 
 
 <div>
 
-	<!-- <div class="float_R">
-		<a href="#"><input class="button" type="submit" value="ログアウト" /></a>
-	</div> -->
 	
 	<div class="clearfix">
 		<table class="width_100p">
 			<tr>
-				<th><input type="checkbox" id="cbx_chkAll" value="全部選択"></th>
-				<th>在庫ID</th>
-				<th>在庫名称</th>
-				<th>単位</th>
-				<th>在庫数量</th>
-				<th>更新者</th>
-				<th>更新日時</th>
-				<th>備考</th>
-				<th>操作</th>
+				<th>選択</th>
+				<th>社員ID</th>
+				<th>入社年月日</th>
+				<th>氏名</th>
+				<th>性別</th>
+				<th>年齢</th>
+				<th>所属</th>
+				<th>メールアドレス</th>
 			</tr>
 			<tr th:each="list : ${ResultList}">
-				<th ><input type="checkbox" name="chk"  th:value="${list.id}" ></th>
-				<td th:text="${list.id}" ></td>
-				<td th:text="${list.name}"></td>
-				<td th:text="${list.unit_name}"></td>
-				<td th:text="${list.stock_num}"></td>
-				<td th:text="${list.update_user}"></td>
-				<td th:text="${list.update_date}"></td>
-				<td th:text="${list.remarks}"></td>
-				<td class="table_button">
-					<div><a href="#"><input class="button" type="submit" value="編集" /></a></div>
-					<div><button class="button" onclick="del(this)" th:value="${list.id}">削除</button></div>
-					<div><a href="#"><input class="button" type="submit" value="更新" /></a></div>
-					<div><a href="#"><input class="button" type="submit" value="入出庫" /></a></div>
-				</td>
+				<th ><input type="checkbox" name="chk"  th:value="${list.employee_id}" ></th>
+				<td th:href="@{/employee/{employee_id}(employee_id=*${list.employee_id})}" th:text="${list.employee_id}"></td>
+				<td th:text="${list.nyushadate}"></td>
+				<td th:text="${list.employee_name}"></td>
+				<td th:text="${list.sex}"></td>
+				<td th:text="${list.age}"></td>
+				<td th:text="${list.dept_name}"></td>
+				<td th:text="${list.mail_address}"></td>
 			</tr>
-			<!-- <tr th:each="list : ${prefecturesList}">
-				<th><a href="http://www.google.com" th:text="${list.calendarDate}" ></a></th>
-				<td th:text="${list.businessDay}"></td>
-				<td th:text="${list.startDay}"></td>
-				<td th:text="${list.absenceDay}"></td>
-				<td th:text="${list.actualWorkingHours}"></td>
-				<td th:text="${list.overtimeHours}"></td>
-				<td th:text="${list.comment}"></td>
-			</tr> -->
 			
 		</table>
 	</div>
 </div>
-<!-- 「チェックボックス」全部選択内容 -->
+
 <script type="text/javascript">
-var all = document.getElementById("cbx_chkAll")
 
-var tb_all = document.getElementsByName("chk")
-
-all.onclick=function (){
-	console.log(22)
-	for( i=0;i<tb_all.length;i++){
-		tb_all[i].checked=this.checked;
-	}
-}
-
-function deleteInfo(){
-	var zaikoIdList = []
-	for( i=0;i<tb_all.length;i++){
-		if(tb_all[i].checked)
-			zaikoIdList.push(tb_all[i].value)
-	}
-	console.log(zaikoIdList)
-	
-	if(zaikoIdList.length==0){
-		alert("選択しない、確認！")
-		return
-	}
-	
-		
-	$.ajax({
-	      type:"POST",
-	      url:"/user/deleteInfo",
-	      data:{zaikoId:zaikoIdList},
-	      dataType: "text",
-	      success: function(data){
-	           location.reload()
-	               }
-	   });
-}
+//ここに処理を記載
 
 
-function del(eve){
-	console.log(eve)
-	
-}
+
 </script> 
 </body>
 </html>
