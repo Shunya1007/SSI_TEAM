@@ -1,8 +1,8 @@
-package com.example.demo.repository;
+package com.kintai.main.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.example.demo.entity.Employee_r_dao;
+import com.kintai.main.entity.Employee_r_dao;
 @Mapper
 public interface Mapping_Employee_R {
 	

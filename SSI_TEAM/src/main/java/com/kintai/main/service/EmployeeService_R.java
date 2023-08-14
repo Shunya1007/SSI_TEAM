@@ -5,8 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.example.demo.repository.Mapping_Employee_R;
 import com.kintai.main.entity.Employee_r_dao;
+import com.kintai.main.mapper.Mapping_Employee_R;
 
 @Service
 public class EmployeeService_R {

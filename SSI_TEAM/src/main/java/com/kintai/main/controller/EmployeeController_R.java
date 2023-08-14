@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-import com.example.demo.entity.Employee_r_dao;
-import com.example.demo.service.EmployeeService_R;
+import com.kintai.main.entity.Employee_r_dao;
+import com.kintai.main.service.EmployeeService_R;
 
 @Controller
 @RequestMapping("/employees")
