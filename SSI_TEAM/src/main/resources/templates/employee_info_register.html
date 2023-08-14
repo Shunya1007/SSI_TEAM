@@ -9,7 +9,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 </head>
 <body>
-<h1>社員情報</h1>
+<h1>社員情報 登録・更新</h1>
 <form th:object="${employee}" th:action="@{/save}" method="post">
     <label for="EMPLOYEE_ID">社員ID:</label>
     <input type="text" id="EMPLOYEE_ID" name="EMPLOYEE_ID" th:value="${employee.EMPLOYEE_ID}" readonly><br><br>
