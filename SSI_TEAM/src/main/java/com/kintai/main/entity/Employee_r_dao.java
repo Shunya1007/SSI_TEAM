@@ -1,3 +1,4 @@
+//篠崎作成
 package com.kintai.main.entity;
 
 import java.util.Date;

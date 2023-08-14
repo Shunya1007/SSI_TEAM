@@ -1,3 +1,4 @@
+//篠崎作成
 package com.kintai.main.mapper;
 
 import org.apache.ibatis.annotations.Mapper;

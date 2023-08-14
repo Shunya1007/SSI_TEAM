@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Mapper.xml -->
+<!-- 篠崎作成 -->
 <!-- EmployeeMapper.xml -->
-<!-- EmployeeMapper.xml -->
-<mapper namespace="com.example.demo.repository.mapper.EmployeeMapper">
+<mapper namespace="com.kintai.main.repository.mapper.EmployeeMapper">
 
     <!-- 社員情報を挿入するSQLクエリ -->
-    <insert id="insertEmployee" parameterType="com.example.demo.entity.Employee">
+    <insert id="insertEmployee" parameterType="com.kintai.main.entity.Employee">
         INSERT INTO employees (EMPLOYEE_NAME, PASSWORD, DEPT_NAME, SEX_NAME, TEL_NO, NYUSHA_DATE, AGE, MAIL_ADDRESS, CREATE_DATE, CREATE_USER, UPDATE_DATE, UPDATE_USER)
         VALUES (#{EMPLOYEE_NAME}, #{PASSWORD}, #{DEPT_NAME}, #{SEX_NAME}, #{TEL_NO}, #{NYUSHA_DATE}, #{AGE}, #{MAIL_ADDRESS}, #{CREATE_DATE}, #{CREATE_USER}, #{UPDATE_DATE}, #{UPDATE_USER})
     </insert>
 
     <!-- 社員情報を更新するSQLクエリ -->
-    <update id="updateEmployee" parameterType="com.example.demo.entity.Employee">
+    <update id="updateEmployee" parameterType="com.kintai.main.entity.Employee">
         UPDATE employees SET
         EMPLOYEE_NAME = #{EMPLOYEE_NAME},
         PASSWORD = #{PASSWORD},
