@@ -24,10 +24,10 @@
 		T.DEL_FLG = 0
 		
 		<if test="employeeId != ''">
-		AND T.EMPLOYEE_ID = #{employee_id}
+		AND T.EMPLOYEE_ID = #{employeeId}
 		</if>
 		<if test="deptId != ''">
-		AND T.DEPT_ID = #{dept_id}
+		AND T.DEPT_ID = #{deptId}
 		</if>
 		<if test="nyushaDateS != '' and nyushaDateE = ''">
 		AND T.NYUSHADATE >= #{nyushaDateS}
