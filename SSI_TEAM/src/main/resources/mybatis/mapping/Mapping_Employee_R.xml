@@ -6,13 +6,13 @@
 
     <!-- 社員情報を挿入するSQLクエリ -->
     <insert id="insertEmployee" parameterType="com.kintai.main.entity.Employee_r_dao">
-        INSERT INTO employees (EMPLOYEE_NAME, PASSWORD, DEPT_NAME, SEX_NAME, TEL_NO, NYUSHA_DATE, AGE, MAIL_ADDRESS, CREATE_DATE, CREATE_USER, UPDATE_DATE, UPDATE_USER)
+        INSERT INTO T_EMPLOYEE (EMPLOYEE_NAME, PASSWORD, DEPT_NAME, SEX_NAME, TEL_NO, NYUSHA_DATE, AGE, MAIL_ADDRESS, CREATE_DATE, CREATE_USER, UPDATE_DATE, UPDATE_USER)
         VALUES (#{EMPLOYEE_NAME}, #{PASSWORD}, #{DEPT_NAME}, #{SEX_NAME}, #{TEL_NO}, #{NYUSHA_DATE}, #{AGE}, #{MAIL_ADDRESS}, #{CREATE_DATE}, #{CREATE_USER}, #{UPDATE_DATE}, #{UPDATE_USER})
     </insert>
 
     <!-- 社員情報を更新するSQLクエリ -->
     <update id="updateEmployee" parameterType="com.kintai.main.entity.Employee_r_dao">
-        UPDATE employees SET
+        UPDATE T_EMPLOYEE SET
         EMPLOYEE_NAME = #{EMPLOYEE_NAME},
         PASSWORD = #{PASSWORD},
         DEPT_NAME = #{DEPT_NAME},
