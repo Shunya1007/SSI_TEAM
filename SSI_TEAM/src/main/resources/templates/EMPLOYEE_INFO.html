@@ -7,6 +7,10 @@
  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<style>
+	#sakujo { visibility:hidden } /* 非表示 */
+	#hyo { visibility:hidden } /* 非表示 */
+</style>
 </head>
 <body>
 <form action="/employee/search" method="POST">
@@ -49,7 +53,7 @@
 			<ul class="ulList_01">
 				<li>&nbsp;</li>
 				<li class="display_flex padding_0">
-					<div><><input class="button" type="submit" value="検索" /></div>
+					<div><><input class="button" type="submit" value="検索" onclick="document.getElementById('hyo').style.visibility = 'visible';"/></div>
 				</li>
 				<!-- <li class="width_74P"><input class="width_100P" type="text" name="address" maxlength = "10"></li> -->
 			</ul>
@@ -58,7 +62,7 @@
 </form> 
 <div class="display_flex">
 	<div><a th:href="@{/employee/add}" class="btn btn-primary" value = "追加"></a></div>
-	<div><input class="button" type="button" value="削除"  onclick = "deleteInfo()" /></div>
+	<div><input class="button" type="button" id ="sakujo" value="削除"  onclick = "deleteInfo()" /></div>
 	<div><a href="#"><input class="button" type="submit" value="閉じる"  onclick="history.back();"/></a></div>
 	
 </div>
@@ -68,7 +72,7 @@
 <div>
 
 	
-	<div class="clearfix">
+	<div class="clearfix" id ="hyo">
 		<table class="width_100p">
 			<tr>
 				<th>選択</th>
