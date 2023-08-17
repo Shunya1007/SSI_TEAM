@@ -21,7 +21,7 @@ import com.kintai.main.service.EmpInfoService;
 
 
 @Controller
-public class  Employee_Info_Contoroller{
+public class  EmployeeInfoContoroller{
 	@Autowired
 	private DeptService deptService;
 	
