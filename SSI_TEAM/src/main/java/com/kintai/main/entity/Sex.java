@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity (name = "M_SEX")
 public class Sex {
 	 @Id
-	 private String SEX_ID;
+	 private int SEX_ID;
 	 private String SEX;
 	 private Date CREATE_DATE;
 	 private String CREATE_USER;
