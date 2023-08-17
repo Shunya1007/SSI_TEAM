@@ -14,7 +14,7 @@ import jakarta.persistence.PreUpdate;
 import lombok.Data;
 @Data
 @Entity
-public class Employee_r_dao {
+public class EmployeeDao {
 	
 	
 	    @Id
