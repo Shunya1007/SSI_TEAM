@@ -1,5 +1,5 @@
 package com.kintai.main.controller;
-
+//池上作成オントローラークラス
 
 import java.util.List;
 
