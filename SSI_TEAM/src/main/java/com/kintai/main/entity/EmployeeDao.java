@@ -13,13 +13,13 @@ import jakarta.persistence.PrePersist;
 import jakarta.persistence.PreUpdate;
 import lombok.Data;
 @Data
-@Entity
+@Entity(name = "T_EMPLOYEE") // テーブル名
 public class EmployeeDao {
 	
 	
 	    @Id
 	    @GeneratedValue(strategy = GenerationType.IDENTITY)
-	    private int EMPLOYEE_ID;
+	    private String EMPLOYEE_ID;
 	    private String PASSWORD;
 	    private String EMPLOYEE_NAME;
 	    private String DEPT_NAME;
