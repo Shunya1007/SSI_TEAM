@@ -2,10 +2,12 @@ package com.kintai.main.service;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.kintai.main.dto.EmpInfoSearchRequest;
 import com.kintai.main.entity.Employee;
 import com.kintai.main.mapper.EmployeeInfoMapper;
-
+@Service
 public class EmpInfoService {
 	
 	private EmployeeInfoMapper employeeInfoMapper;
