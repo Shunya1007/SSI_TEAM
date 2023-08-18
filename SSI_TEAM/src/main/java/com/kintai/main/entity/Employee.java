@@ -1,12 +1,15 @@
 package com.kintai.main.entity;
 import java.util.Date;
 
+import javax.persistence.Entity;
+
+import jakarta.persistence.Id;
 import lombok.Data;
 
 @Data
-//@Entity (name = "T_EMPLOYEE")
+@Entity (name = "T_EMPLOYEE")
 public class Employee {
-// @Id
+ @Id
  private String EMPLOYEE_ID;
  private String EMPLOYEE_NAME;
  private String PASSWORD;
