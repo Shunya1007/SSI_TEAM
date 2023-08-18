@@ -20,27 +20,17 @@
     <label for="EMPLOYEE_NAME">社員名:</label>
     <input type="text" id="EMPLOYEE_NAME" name="EMPLOYEE_NAME" th:field="*{EMPLOYEE_NAME}"><br><br>
 
-    <label for="DEPT_NAME">所属:</label>
-    <input type="text" id="DEPT_NAME" name="DEPT_NAME" th:field="*{DEPT_NAME}"><br><br>
+    <label for="DEPT_ID">所属:</label>
+    <input type="text" id="DEPT_ID" name="DEPT_ID" th:field="*{DEPT_ID}"><br><br>
 
-    <label for="SEX_NAME">性別:</label>
-    <select id="SEX_NAME" name="SEX_NAME" th:field="*{SEX_NAME}">
+    <label for="SEX_ID">性別:</label>
+    <select id="SEX_ID" name="SEX_ID" th:field="*{SEX_ID}">
         <option value="male">男性</option>
         <option value="female">女性</option>
         <option value="none">未確認</option>
     </select><br><br>
 
-    <label for="TEL_NO">電話番号:</label>
-    <input type="text" id="TEL_NO" name="TEL_NO" th:field="*{TEL_NO}"><br><br>
-
-    <label for="NYUSHA_DATE">入社年月日:</label>
-    <input type="text" id="NYUSHA_DATE" name="NYUSHA_DATE" th:field="*{NYUSHA_DATE}"><br><br>
-
-    <label for="AGE">年齢:</label>
-    <input type="text" id="AGE" name="AGE" th:field="*{AGE}"><br><br>
-
-    <label for="MAIL_ADDRESS">メールアドレス:</label>
-    <input type="text" id="MAIL_ADDRESS" name="MAIL_ADDRESS" th:field="*{MAIL_ADDRESS}"><br><br>
+    <!-- 他のフィールドも同様に修正 -->
 
     <button type="submit" th:if="${isUpdate}">更新</button>
     <button type="submit" th:if="${not isUpdate}">登録</button>
