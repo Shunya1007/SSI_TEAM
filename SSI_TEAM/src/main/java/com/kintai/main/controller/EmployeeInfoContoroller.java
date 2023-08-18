@@ -36,7 +36,7 @@ public class  EmployeeInfoContoroller{
      */
 	
 	@GetMapping(value = "/empInfoDept")
-	public String displayList(Model model) {
+	public String displayList(EmpInfoSearchRequest empInfoSearchRequest, Model model) {
 		List<Dept> deptList = deptService.getDeptAll();
 		model.addAttribute("deptList", deptList);
 		
@@ -50,9 +50,10 @@ public class  EmployeeInfoContoroller{
      * @param model Model
      * @return 社員情報一覧画面
      */
-	@RequestMapping(value = "/empinfo/search", method = RequestMethod.POST)
+	@RequestMapping(value = "/employee/search", method = RequestMethod.POST)
     public String search(@ModelAttribute EmpInfoSearchRequest empInfoSearchRequest, Model model) {
-        List<Employee> empList = empInfoService.search(empInfoSearchRequest);
+        System.out.println("hello");
+		List<Employee> empList = empInfoService.search(empInfoSearchRequest);
         model.addAttribute("emplist", empList);
         return "EMPLOYEE_INFO";
     }

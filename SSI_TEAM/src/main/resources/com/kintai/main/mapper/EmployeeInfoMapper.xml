@@ -2,23 +2,23 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.kintai.main.mapper.EmployeeInfoMappeer">
+<mapper namespace="com.kintai.main.mapper.EmployeeInfoMapper">
 
 <!--社員情報一覧検索-->
 <select id="search" resultType="com.kintai.main.dto.EmpInfoSearchRequest">
 	SELECT
-		T.EMPLOYEE_ID AS employee_id,
-		T.NYUSHA_DATE AS nyusha_date,
-		T.EMPLOYEE_NAME AS employee_name,
+		T.EMPLOYEE_ID AS employeeId,
+		T.NYUSHA_DATE AS nyushaDate,
+		T.EMPLOYEE_NAME AS employeeName,
 		S.SEX AS sex,
 		T.AGE AS age,
-		D.DEPT_NAME AS dept_name,
-		T.MAIL_ADDRESS AS mail_address
+		D.DEPT_NAME AS deptName,
+		T.MAIL_ADDRESS AS mailAddress
 	FROM
-		T_EMPLOYEE T
-	LEFT JOIN M_DEPT D
+			t_employee T
+	LEFT JOIN m_dept D
 		ON T.DEPT_ID = D.DEPT_ID
-	LEFT JOIN M_SEX S
+	LEFT JOIN m_sex S
 		ON T.SEX_ID = S.SEX_ID
 	WHERE
 		T.DEL_FLG = 0
@@ -30,13 +30,13 @@
 		AND T.DEPT_ID = #{deptId}
 		</if>
 		<if test="nyushaDateS != '' and nyushaDateE = ''">
-		AND T.NYUSHADATE >= #{nyushaDateS}
+		AND T.NYUSHA_DATE >= #{nyushaDateS}
 		</if>
 		<if test="nyushaDateE != '' and nyushaDateS = ''">
-		AND T.NYUSHADATE >= #{nyushaDateE}
+		AND T.NYUSHA_DATE >= #{nyushaDateE}
 		</if>
 		<if test="nyushaDateS != '' and nyushaDateS = ''">
-		AND T.NYUSHADATE >= #{nyushaDateE}
+		AND T.NYUSHA_DATE >= #{nyushaDateE}
 		</if>
 		<if test="nyushaDateS > nyushaDateE">
 		AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
