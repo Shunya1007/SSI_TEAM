@@ -36,7 +36,11 @@
     </select><br><br>
     
     <label for="age">年齢:</label>
-    <input type="number" id="age" name="age" th:field="*{age}"><br><br>
+    <input type="text" id="age" name="age" th:field="*{age}"><br><br>
+    
+    <label for="nyushaDate">入社年月日:</label>
+    <input type="text" id="nyushaDate" name="nyushaDate" th:field="*{nyushaDate}"><br><br>
+    
     
     <label for="telNo">電話番号:</label>
     <input type="text" id="telNo" name="telNo" th:field="*{telNo}"><br><br>
@@ -44,9 +48,9 @@
     <label for="mailAddress">メールアドレス:</label>
     <input type="text" id="mailAddress" name="mailAddress" th:field="*{mailAddress}"><br><br>
     
-    <!-- 他のフィールドも同様に修正 -->
+   
     
-    <label>部署名: </label>
+    <label> </label>
     <span th:text="${employeeDao.deptId}"></span>
     <!-- 他の部署情報のプロパティも同様に表示 -->
     
