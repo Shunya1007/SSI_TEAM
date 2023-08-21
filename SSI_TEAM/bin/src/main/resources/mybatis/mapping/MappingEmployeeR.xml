@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Mapper.xml -->
+<!-- 篠崎作成 -->
+<!-- EmployeeMapper.xml -->
+<mapper namespace="com.kintai.main.mapper.MappingEmployeeR">
+
+    <!-- 社員情報を挿入するSQLクエリ -->
+    <insert id="insertEmployee" parameterType="com.kintai.main.entity.EmployeeDao">
+        INSERT INTO T_EMPLOYEE (EMPLOYEE_NAME, PASSWORD, DEPT_NAME, SEX_NAME, TEL_NO, NYUSHA_DATE, AGE, MAIL_ADDRESS, CREATE_DATE, CREATE_USER, UPDATE_DATE, UPDATE_USER)
+        VALUES (#{EMPLOYEE_NAME}, #{PASSWORD}, #{DEPT_NAME}, #{SEX_NAME}, #{TEL_NO}, #{NYUSHA_DATE}, #{AGE}, #{MAIL_ADDRESS}, #{CREATE_DATE}, #{CREATE_USER}, #{UPDATE_DATE}, #{UPDATE_USER})
+    </insert>
+
+    <!-- 社員情報を更新するSQLクエリ -->
+    <update id="updateEmployee" parameterType="com.kintai.main.entity.EmployeeDao">
+        UPDATE T_EMPLOYEE SET
+        EMPLOYEE_NAME = #{EMPLOYEE_NAME},
+        PASSWORD = #{PASSWORD},
+        DEPT_NAME = #{DEPT_NAME},
+        SEX_NAME = #{SEX_NAME},
+        TEL_NO = #{TEL_NO},
+        NYUSHA_DATE = #{NYUSHA_DATE},
+        AGE = #{AGE},
+        MAIL_ADDRESS = #{MAIL_ADDRESS},
+        UPDATE_DATE = #{UPDATE_DATE},
+        UPDATE_USER = #{UPDATE_USER}
+        WHERE EMPLOYEE_ID = #{EMPLOYEE_ID}
+    </update>
+
+    <!-- 他のSQLクエリを追加する場合↓へ記述 -->
+
+</mapper>

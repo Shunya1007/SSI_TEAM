@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kintai.main.mapper.EmployeeInfoMappeer">
+
+<!--社員情報一覧検索-->
+<select id="search" resultType="com.kintai.main.dto.EmpInfoSearchRequest">
+	SELECT
+		T.EMPLOYEE_ID AS employee_id,
+		T.NYUSHA_DATE AS nyusha_date,
+		T.EMPLOYEE_NAME AS employee_name,
+		S.SEX AS sex,
+		T.AGE AS age,
+		D.DEPT_NAME AS dept_name,
+		T.MAIL_ADDRESS AS mail_address
+	FROM
+		T_EMPLOYEE T
+	LEFT JOIN M_DEPT D
+		ON T.DEPT_ID = D.DEPT_ID
+	LEFT JOIN M_SEX S
+		ON T.SEX_ID = S.SEX_ID
+	WHERE
+		T.DEL_FLG = 0
+		
+		<if test="employeeId != ''">
+		AND T.EMPLOYEE_ID = #{employeeId}
+		</if>
+		<if test="deptId != ''">
+		AND T.DEPT_ID = #{deptId}
+		</if>
+		<if test="nyushaDateS != '' and nyushaDateE = ''">
+		AND T.NYUSHADATE >= #{nyushaDateS}
+		</if>
+		<if test="nyushaDateE != '' and nyushaDateS = ''">
+		AND T.NYUSHADATE >= #{nyushaDateE}
+		</if>
+		<if test="nyushaDateS != '' and nyushaDateS = ''">
+		AND T.NYUSHADATE >= #{nyushaDateE}
+		</if>
+		<if test="nyushaDateS > nyushaDateE">
+		AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
+		</if>
+		<if test="nyushaDateE > nyushaDateS">
+		AND T.NYUSHA_DATE BETWEEN #{nyushaDateS} AND #{nyushaDateE}
+		</if>
+	
+
+
+</select>
+<!--削除-->
+<update id="delete">
+UPDATE 
+	T_EMPLOYEE
+SET
+	DEL_FLG = 1,
+	UPDATE_DATE = CURRENT_TIMESTAMP
+WHERE
+	EMPLOYEE_ID = #{employeeID}
+
+</update>
+
+
+</mapper>
