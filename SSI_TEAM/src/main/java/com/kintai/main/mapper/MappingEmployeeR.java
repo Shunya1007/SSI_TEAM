@@ -3,12 +3,12 @@ package com.kintai.main.mapper;
 
 import org.apache.ibatis.annotations.Mapper;
 
-import com.kintai.main.entity.EmployeeDao;
+import com.kintai.main.entity.Employee;
 @Mapper
 public interface MappingEmployeeR {
 	
 	
-	void insertEmployee(EmployeeDao employee_r_dao);
-	void updateEmployee(EmployeeDao employee_r_dao);
+	void insertEmployee(Employee employee);
+	void updateEmployee(Employee employee);
 	
 }

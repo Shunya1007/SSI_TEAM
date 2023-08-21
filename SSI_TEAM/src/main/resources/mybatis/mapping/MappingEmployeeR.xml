@@ -5,13 +5,13 @@
 <mapper namespace="com.kintai.main.mapper.MappingEmployeeR">
 
     <!-- 社員情報を挿入するSQLクエリ -->
-    <insert id="insertEmployee" parameterType="com.kintai.main.entity.EmployeeDao">
+    <insert id="insertEmployee" parameterType="com.kintai.main.entity.Employee">
         INSERT INTO T_EMPLOYEE (EMPLOYEE_NAME, PASSWORD, DEPT_NAME, SEX_NAME, TEL_NO, NYUSHA_DATE, AGE, MAIL_ADDRESS, CREATE_DATE, CREATE_USER, UPDATE_DATE, UPDATE_USER)
         VALUES (#{EMPLOYEE_NAME}, #{PASSWORD}, #{DEPT_NAME}, #{SEX_NAME}, #{TEL_NO}, #{NYUSHA_DATE}, #{AGE}, #{MAIL_ADDRESS}, #{CREATE_DATE}, #{CREATE_USER}, #{UPDATE_DATE}, #{UPDATE_USER})
     </insert>
 
     <!-- 社員情報を更新するSQLクエリ -->
-    <update id="updateEmployee" parameterType="com.kintai.main.entity.EmployeeDao">
+    <update id="updateEmployee" parameterType="com.kintai.main.entity.Employee">
         UPDATE T_EMPLOYEE SET
         EMPLOYEE_NAME = #{EMPLOYEE_NAME},
         PASSWORD = #{PASSWORD},

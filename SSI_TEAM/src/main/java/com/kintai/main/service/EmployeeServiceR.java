@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.kintai.main.entity.EmployeeDao;
+import com.kintai.main.entity.Employee;
 import com.kintai.main.mapper.MappingEmployeeR;
 
 @Service
@@ -20,12 +20,12 @@ public class EmployeeServiceR {
     }
 
     @Transactional
-    public void insertEmployee(EmployeeDao employee) {
+    public void insertEmployee(Employee employee) {
         employeeMapper.insertEmployee(employee);
     }
 
     @Transactional
-    public void updateEmployee(EmployeeDao employee) {
+    public void updateEmployee(Employee employee) {
         employeeMapper.updateEmployee(employee);
     }
 

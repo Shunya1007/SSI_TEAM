@@ -2,17 +2,15 @@ package com.kintai.main.entity;
 
 import java.util.Date;
 
-import javax.persistence.Id;
-
 import lombok.Data;
 
 @Data
 
 public class EmployeeDao {
     
-    @Id
+    //@Id
     
-    private Long id;
+    //private Long id;
     
     
     private String employeeId;
