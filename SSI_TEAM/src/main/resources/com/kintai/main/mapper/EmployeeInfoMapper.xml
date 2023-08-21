@@ -29,15 +29,15 @@
 		<if test="deptId != ''">
 		AND T.DEPT_ID = #{deptId}
 		</if>
-		<if test="nyushaDateS != '' and nyushaDateE = ''">
-		AND T.NYUSHA_DATE >= #{nyushaDateS}
+		<!--開始が入力、終了が未入力-->
+		<if test="nyushaDateS != null">
+		AND T.NYUSHA_DATE &gt;= #{nyushaDateS}
 		</if>
-		<if test="nyushaDateE != '' and nyushaDateS = ''">
-		AND T.NYUSHA_DATE >= #{nyushaDateE}
+		<!--開始が未入力、終了が入力-->
+		<if test="nyushaDateE != null">
+		AND T.NYUSHA_DATE &lt;= #{nyushaDateE}
 		</if>
-		<if test="nyushaDateS != '' and nyushaDateS = ''">
-		AND T.NYUSHA_DATE >= #{nyushaDateE}
-		</if>
+		<!---->
 		<if test="nyushaDateS > nyushaDateE">
 		AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
 		</if>

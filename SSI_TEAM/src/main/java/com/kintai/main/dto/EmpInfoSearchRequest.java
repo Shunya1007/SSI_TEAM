@@ -1,6 +1,9 @@
 package com.kintai.main.dto;
 
 import java.io.Serializable;
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
 
 import lombok.Data;
 
@@ -14,9 +17,12 @@ public class EmpInfoSearchRequest implements Serializable{
     private String sexId;
     private String sexName;
     private String telNo;
-    private String nyushaDate;
-    private String nyushaDateS;
-    private String nyushaDateE;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date nyushaDate;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date nyushaDateS;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private Date nyushaDateE;
     private int age;
     private String mailAddress;
     

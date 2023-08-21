@@ -10,7 +10,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 <style>
 	#sakujo { visibility:hidden } /* 非表示 */
-	#hyo { visibility:hidden } /* 非表示 */
+	/*#hyo { visibility:hidden }  非表示 */
 </style>
 </head>
 <body>
@@ -19,11 +19,11 @@
 		<div class="width_33P">
 			<ul class="ulList_01">
 				<li><label>社員ID</label></li>
-				<li class="width_74P"><input type="text" name="employeeId" maxlength = "10" placeholder="社員IDを入力してください"  th:value="${employee_id}"></li>
+				<li class="width_74P"><input type="text" name="employee_id" maxlength = "10" placeholder="社員IDを入力してください"  th:value="${empInfoSearchRequest.employeeId}"></li>
 			</ul>
 			<ul class="ulList_01">
 				<li><label>入社年月日</label></li>
-				<li class="width_74P"><input id="width_42P" type="text" name="nyushaDateS" th:value="${nyushaDateS}" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="text" name="nyushaDateE" th:value="${nyushaDateE}" maxlength = "20" placeholder="YYYY/MM/DD"></li>
+				<li class="width_74P"><input id="width_42P" type="date" name="nyushaDateS" th:value="${empInfoSearchRequest.nyushaDateS}" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="date" name="nyushaDateE" th:value="${empInfoSearchRequest.nyushaDateE}" maxlength = "20" placeholder="YYYY/MM/DD"></li>
 			</ul>
 		</div>
 		<div class="width_33P">
