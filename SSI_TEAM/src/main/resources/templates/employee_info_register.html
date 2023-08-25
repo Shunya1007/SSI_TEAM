@@ -9,10 +9,7 @@
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     
     
-HTMLフォームの要素を水平方向に揃えるために、CSSを使用して要素の配置を調整できます。以下は、フォームの要素を揃えるための基本的なスタイルの例です。このスタイルを追加することで、フォームの各要素が均等な幅で配置されます。
 
-html
-Copy code
 <style>
     /* フォーム要素を水平に揃えるスタイル */
     label {
@@ -40,8 +37,6 @@ Copy code
     <label for="employeeId" class="required">社員ID:</label>
     <input type="text" id="employeeId" name="employeeId" th:field="*{employeeId}"><br><br>
     
-    <label for="password">パスワード:</label>
-    <input type="password" id="password" name="password" th:field="*{password}"><br><br>
     
     <label for="employeeName" class="required">社員名:</label>
     <input type="text" id="employeeName" name="employeeName" th:field="*{employeeName}"><br><br>
@@ -54,13 +49,14 @@ Copy code
     
     <label for="sexId">性別:</label>
     <select id="sexId" name="sexId" th:field="*{sexId}">
+       <option value="none">未確認</option>
         <option value="male">男性</option>
         <option value="female">女性</option>
-        <option value="none">未確認</option>
+        
     </select><br><br>
     
     <label for="age">年齢:</label>
-    <input type="text" id="age" name="age" th:field="*{age}"><br><br>
+    <input type="text" id="age" name="age" th:field="*{age}" th:value="${''}"><br><br>
     
     <label for="nyushaDate">入社年月日:</label>
     <input type="text" id="nyushaDate" name="nyushaDate" th:field="*{nyushaDate}"><br><br>
