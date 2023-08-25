@@ -55,6 +55,7 @@ public class  EmployeeInfoContoroller{
         System.out.println("hello");
 		List<Employee> empList = empInfoService.search(empInfoSearchRequest);
         model.addAttribute("emplist", empList);
+        System.out.println("hello２");
         return "EMPLOYEE_INFO";
     }
 	

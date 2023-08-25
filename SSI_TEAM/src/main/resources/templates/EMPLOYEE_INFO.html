@@ -62,7 +62,7 @@
 	</div>
 </form> 
 <div class="display_flex">
-	<div><a th:href="@{/employee/add}" class="btn btn-primary" value= "追加"></a></div>
+	<div><a th:href="@{/employee/add}" class="btn btn-primary" value= "追加"><input class="button" type="submit" value="追加"/></a></div>
 	<div><input class="button" type="button" id ="sakujo" value="削除"  onclick = "deleteInfo()" /></div>
 	<div><a href="#"><input class="button" type="submit" value="閉じる"  onclick="history.back();"/></a></div>
 	
@@ -85,15 +85,15 @@
 				<th>所属</th>
 				<th>メールアドレス</th>
 			</tr>
-			<tr th:each="list : ${ResultList}">
-				<th ><input type="checkbox" name="chk"  th:value="${list.employee_id}" ></th>
-				<td th:href="@{/employee/{employee_id}(employee_id=*${list.employee_id})}" th:text="${list.employee_id}"></td>
-				<td th:text="${list.nyushadate}"></td>
-				<td th:text="${list.employee_name}"></td>
-				<td th:text="${list.sex}"></td>
-				<td th:text="${list.age}"></td>
-				<td th:text="${list.dept_name}"></td>
-				<td th:text="${list.mail_address}"></td>
+			<tr th:each="empList : ${emplist}">
+				<th ><input type="checkbox" name="chk"  th:value="${empList.employeeId}" ></th>
+				<td th:href="@{/employee/{employee_id}(employee_id=*${empList.employeeId})}" th:text="${empList.employeeId}"></td>
+				<td th:text="${empList.nyushaDate}"></td>
+				<td th:text="${empList.employeeName}"></td>
+				<td th:text="${empList.sexName}"></td>
+				<td th:text="${empList.age}"></td>
+				<td th:text="${empList.deptName}"></td>
+				<td th:text="${empList.mailAddress}"></td>
 			</tr>
 			
 		</table>

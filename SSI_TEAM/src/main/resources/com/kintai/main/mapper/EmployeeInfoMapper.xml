@@ -23,10 +23,10 @@
 	WHERE
 		T.DEL_FLG = 0
 		
-		<if test="employeeId != ''">
+		<if test="employeeId != null">
 		AND T.EMPLOYEE_ID = #{employeeId}
 		</if>
-		<if test="deptId != ''">
+		<if test="deptId != null">
 		AND T.DEPT_ID = #{deptId}
 		</if>
 		<!--開始が入力、終了が未入力-->
