@@ -7,19 +7,43 @@
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    
+    
+HTMLフォームの要素を水平方向に揃えるために、CSSを使用して要素の配置を調整できます。以下は、フォームの要素を揃えるための基本的なスタイルの例です。このスタイルを追加することで、フォームの各要素が均等な幅で配置されます。
+
+html
+Copy code
+<style>
+    /* フォーム要素を水平に揃えるスタイル */
+    label {
+        display: inline-block;
+        width: 150px; /* ラベルの幅を調整（適宜変更） */
+        text-align: right; /* ラベルを右寄せにする */
+        margin-right: 10px; /* ラベルとフォーム要素の間隔を調整 */
+    }
+    input, select {
+        width: 300px; /* フォーム要素の幅を調整（適宜変更） */
+    }
+    
+            label.required::after {
+            content: " *"; /* テキストの後ろに「*」を追加 */
+            color: red; /* 赤色に設定 */
+	}
+    
+</style>
 </head>
 <body>
 <h1>社員情報 登録・更新</h1>
 <form th:object="${employeeDao}" th:action="@{/save}" method="post">
     
     
-    <label for="employeeId">社員ID:</label>
+    <label for="employeeId" class="required">社員ID:</label>
     <input type="text" id="employeeId" name="employeeId" th:field="*{employeeId}"><br><br>
     
     <label for="password">パスワード:</label>
     <input type="password" id="password" name="password" th:field="*{password}"><br><br>
     
-    <label for="employeeName">社員名:</label>
+    <label for="employeeName" class="required">社員名:</label>
     <input type="text" id="employeeName" name="employeeName" th:field="*{employeeName}"><br><br>
     
     <label for="deptId">所属:</label>
