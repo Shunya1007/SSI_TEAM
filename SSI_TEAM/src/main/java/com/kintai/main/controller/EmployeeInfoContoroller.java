@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kintai.main.dto.EmpInfoSearchRequest;
 import com.kintai.main.entity.Dept;
+import com.kintai.main.entity.EmpInfo;
 import com.kintai.main.entity.Employee;
 import com.kintai.main.service.DeptService;
 import com.kintai.main.service.EmpInfoService;
@@ -38,7 +39,10 @@ public class  EmployeeInfoContoroller{
 	@GetMapping(value = "/empInfoDept")
 	public String displayList(EmpInfoSearchRequest empInfoSearchRequest, Model model) {
 		List<Dept> deptList = deptService.getDeptAll();
+		List<EmpInfo> empList = empInfoService.getAll();
+		
 		model.addAttribute("deptList", deptList);
+		model.addAttribute("empList", empList);
 		
 		return "EMPLOYEE_INFO";
 	}

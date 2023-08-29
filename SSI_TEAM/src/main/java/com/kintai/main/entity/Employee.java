@@ -10,7 +10,7 @@ import lombok.Data;
 @Entity (name = "T_EMPLOYEE")
 public class Employee {
  @Id
- private String EMPLOYEE_ID;
+ private String EMPLOYEE_ID; //
  private String EMPLOYEE_NAME;
  private String PASSWORD;
  private String DEPT_ID;

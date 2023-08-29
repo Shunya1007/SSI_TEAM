@@ -84,15 +84,15 @@
 				<th>所属</th>
 				<th>メールアドレス</th>
 			</tr>
-			<tr th:each="empList : ${emplist}">
-				<th ><input type="checkbox" name="chk"  th:value="${empList.employeeId}" ></th>
-				<td th:href="@{/employee/{employee_id}(employee_id=*${empList.employeeId})}" th:text="${empList.employeeId}"></td>
-				<td th:text="${empList.nyushaDate}"></td>
-				<td th:text="${empList.employeeName}"></td>
-				<td th:text="${empList.sexName}"></td>
-				<td th:text="${empList.age}"></td>
-				<td th:text="${empList.deptName}"></td>
-				<td th:text="${empList.mailAddress}"></td>
+			<tr th:each="emp : ${empList}">
+				<th ><input type="checkbox" name="chk"  th:value="${emp.employeeId}" ></th>
+				<td th:href="@{/employee/{employee_id}(employee_id=${emp.employeeId})}" th:text="${emp.employeeId}"></td>
+				<td th:text="${emp.nyushaDate}"></td>
+				<td th:text="${emp.employeeName}"></td>
+				<td th:text="${emp.sexName}"></td>
+				<td th:text="${emp.age}"></td>
+				<td th:text="${emp.deptName}"></td>
+				<td th:text="${emp.mailAddress}"></td>
 			</tr>
 			
 		</table>

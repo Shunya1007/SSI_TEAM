@@ -4,61 +4,73 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.kintai.main.mapper.EmployeeInfoMapper">
 
-<!--社員情報一覧検索-->
-<select id="search" resultType="com.kintai.main.dto.EmpInfoSearchRequest">
-	SELECT
+	<!--社員情報一覧検索 -->
+	<select id="search"
+		resultType="com.kintai.main.dto.EmpInfoSearchRequest">
+		SELECT
 		T.EMPLOYEE_ID AS employeeId,
 		T.NYUSHA_DATE AS nyushaDate,
 		T.EMPLOYEE_NAME AS employeeName,
 		S.SEX AS sex,
 		T.AGE AS age,
-		D.DEPT_NAME AS deptName,
+		D.DEPT_NAME
+		AS deptName,
 		T.MAIL_ADDRESS AS mailAddress
-	FROM
-			t_employee T
-	LEFT JOIN m_dept D
+		FROM
+		t_employee T
+		LEFT JOIN m_dept D
 		ON T.DEPT_ID = D.DEPT_ID
-	LEFT JOIN m_sex S
+		LEFT JOIN m_sex S
 		ON T.SEX_ID = S.SEX_ID
-	WHERE
+		WHERE
 		T.DEL_FLG = 0
-		
+
 		<if test="employeeId != null">
-		AND T.EMPLOYEE_ID = #{employeeId}
+			AND T.EMPLOYEE_ID = #{employeeId}
 		</if>
 		<if test="deptId != null">
-		AND T.DEPT_ID = #{deptId}
+			AND T.DEPT_ID = #{deptId}
 		</if>
-		<!--開始が入力、終了が未入力-->
+		<!--開始が入力、終了が未入力 -->
 		<if test="nyushaDateS != null">
-		AND T.NYUSHA_DATE &gt;= #{nyushaDateS}
+			AND T.NYUSHA_DATE &gt;= #{nyushaDateS}
 		</if>
-		<!--開始が未入力、終了が入力-->
+		<!--開始が未入力、終了が入力 -->
 		<if test="nyushaDateE != null">
-		AND T.NYUSHA_DATE &lt;= #{nyushaDateE}
+			AND T.NYUSHA_DATE &lt;= #{nyushaDateE}
 		</if>
 		<!---->
 		<if test="nyushaDateS > nyushaDateE">
-		AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
+			AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
 		</if>
 		<if test="nyushaDateE > nyushaDateS">
-		AND T.NYUSHA_DATE BETWEEN #{nyushaDateS} AND #{nyushaDateE}
+			AND T.NYUSHA_DATE BETWEEN #{nyushaDateS} AND #{nyushaDateE}
 		</if>
-	
+
+	</select>
+
+	<select id="findAll" resultType="com.kintai.main.entity.EmpInfo">
+		SELECT t1.*, t2.dept_name as DEPT_NAME, t3.sex as SEX_NAME
+		FROM t_employee t1
+		LEFT JOIN m_dept t2 ON t1.dept_id = t2.dept_id
+		LEFT JOIN m_sex t3 ON t1.sex_id = t3.sex_id
+		WHERE t1.del_flg =0;
+	</select>
 
 
-</select>
-<!--削除-->
-<update id="delete">
-UPDATE 
-	T_EMPLOYEE
-SET
-	DEL_FLG = 1,
-	UPDATE_DATE = CURRENT_TIMESTAMP
-WHERE
-	EMPLOYEE_ID = #{employeeID}
 
-</update>
+
+	<!--削除 -->
+	<update id="delete">
+		UPDATE
+		T_EMPLOYEE
+		SET
+		DEL_FLG = 1,
+		UPDATE_DATE = CURRENT_TIMESTAMP
+		WHERE
+		EMPLOYEE_ID = #{employeeID}
+
+	</update>
 
 
 </mapper>
