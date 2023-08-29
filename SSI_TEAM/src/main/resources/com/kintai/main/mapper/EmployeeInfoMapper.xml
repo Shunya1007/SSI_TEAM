@@ -56,6 +56,23 @@
 		LEFT JOIN m_sex t3 ON t1.sex_id = t3.sex_id
 		WHERE t1.del_flg =0;
 	</select>
+	
+	<select id="findByRequest" resultType="com.kintai.main.entity.EmpInfo">
+        SELECT t1.*, t2.dept_name as DEPT_NAME, t3.sex as SEX_NAME
+		FROM t_employee t1
+		LEFT JOIN m_dept t2 ON t1.dept_id = t2.dept_id
+		LEFT JOIN m_sex t3 ON t1.sex_id = t3.sex_id
+		  <where>
+		  	t1.del_flg = 0
+		    <if test="employeeId != null and employeeId != ''">
+		      AND t1.employee_id = #{employeeId}
+		    </if>
+		    <if test="deptId != null and deptId != ''">
+            AND t1.dept_id = #{deptId}
+        	</if>
+		   
+		  </where>
+    </select>
 
 
 

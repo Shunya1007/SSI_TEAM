@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.kintai.main.dto.EmpInfoSearchRequest;
+import com.kintai.main.dto.SearchRequest;
 import com.kintai.main.entity.EmpInfo;
 import com.kintai.main.entity.Employee;
 import com.kintai.main.mapper.EmployeeInfoMapper;
@@ -25,6 +26,11 @@ public class EmpInfoService {
 	
 	public List<EmpInfo> getAll(){
 		return employeeInfoMapper.findAll();
+
+	}
+	
+	public List<EmpInfo> search2(SearchRequest request){
+		return employeeInfoMapper.findByRequest(request);
 
 	}
 

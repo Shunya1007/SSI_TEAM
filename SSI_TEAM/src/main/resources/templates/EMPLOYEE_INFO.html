@@ -13,23 +13,23 @@
 </style>
 </head>
 <body>
-<form action="/employee/search" method="POST">
+<form action="/employee/search" th:object="${searchRequest}" method="POST">
 	<div class="display_flex">
 		<div class="width_33P">
 			<ul class="ulList_01">
 				<li><label>社員ID</label></li>
-				<li class="width_74P"><input type="text" name="employee_id" maxlength = "10" placeholder="社員IDを入力してください"  th:value="${empInfoSearchRequest.employeeId}"></li>
+				<li class="width_74P"><input type="text" name="employee_id" maxlength = "10" placeholder="社員IDを入力してください" th:field="*{employeeId}"></li>
 			</ul>
 			<ul class="ulList_01">
 				<li><label>入社年月日</label></li>
-				<li class="width_74P"><input id="width_42P" type="date" name="nyushaDateS" th:value="${empInfoSearchRequest.nyushaDateS}" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="date" name="nyushaDateE" th:value="${empInfoSearchRequest.nyushaDateE}" maxlength = "20" placeholder="YYYY/MM/DD"></li>
+				<li class="width_74P"><input id="width_42P" type="date" name="nyushaDateS" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="date" name="nyushaDateE" maxlength = "20" placeholder="YYYY/MM/DD"></li>
 			</ul>
 		</div>
 		<div class="width_33P">
 			<ul class="ulList_01">
 				<li><label>所属</label></li>
 				<li class="width_74P">
-					<select>
+					<select th:field="*{deptId}">
             			<option value=""></option>
             			<option
                 			th:each="dept : ${deptList}"

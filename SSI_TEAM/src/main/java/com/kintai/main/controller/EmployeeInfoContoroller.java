@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.kintai.main.dto.EmpInfoSearchRequest;
+import com.kintai.main.dto.SearchRequest;
 import com.kintai.main.entity.Dept;
 import com.kintai.main.entity.EmpInfo;
 import com.kintai.main.entity.Employee;
@@ -37,7 +38,7 @@ public class  EmployeeInfoContoroller{
      */
 	
 	@GetMapping(value = "/empInfoDept")
-	public String displayList(EmpInfoSearchRequest empInfoSearchRequest, Model model) {
+	public String displayList(SearchRequest request,EmpInfoSearchRequest empInfoSearchRequest, Model model) {
 		List<Dept> deptList = deptService.getDeptAll();
 		List<EmpInfo> empList = empInfoService.getAll();
 		
@@ -55,11 +56,15 @@ public class  EmployeeInfoContoroller{
      * @return 社員情報一覧画面
      */
 	@RequestMapping(value = "/employee/search", method = RequestMethod.POST)
-    public String search(@ModelAttribute EmpInfoSearchRequest empInfoSearchRequest, Model model) {
-        System.out.println("hello");
-		List<Employee> empList = empInfoService.search(empInfoSearchRequest);
-        model.addAttribute("emplist", empList);
-        System.out.println("hello２");
+    public String search(SearchRequest searchRequest, Model model) {
+        //System.out.println("hello");
+		//List<Employee> empList = empInfoService.search(empInfoSearchRequest);
+        //model.addAttribute("emplist", empList);
+		List<Dept> deptList = deptService.getDeptAll();
+		List<EmpInfo> empList =  empInfoService.search2(searchRequest);
+        model.addAttribute("empList",empList);
+        model.addAttribute("deptList", deptList);
+        //System.out.println("hello２");
         return "EMPLOYEE_INFO";
     }
 	

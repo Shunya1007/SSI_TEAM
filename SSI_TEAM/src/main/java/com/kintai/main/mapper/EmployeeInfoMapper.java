@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.kintai.main.dto.EmpInfoSearchRequest;
+import com.kintai.main.dto.SearchRequest;
 import com.kintai.main.entity.EmpInfo;
 import com.kintai.main.entity.Employee;
 
@@ -22,6 +23,8 @@ public interface EmployeeInfoMapper {
 	List<Employee> search(EmpInfoSearchRequest employee);
 
 	List<EmpInfo> findAll();
+	
+	List<EmpInfo> findByRequest(SearchRequest request);
 
 	void delete(Long employee_id);
 }
