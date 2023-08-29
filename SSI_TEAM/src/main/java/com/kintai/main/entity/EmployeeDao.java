@@ -37,7 +37,7 @@ public class EmployeeDao {
     private String mailAddress;
     
    
-    private Date nyushaDate;
+    private String nyushaDate;
     
    
     private String delFlg;

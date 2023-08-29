@@ -18,10 +18,12 @@
 		T.MAIL_ADDRESS AS mailAddress
 		FROM
 		t_employee T
-		LEFT JOIN m_dept D
+		LEFT JOIN
+		m_dept D
 		ON T.DEPT_ID = D.DEPT_ID
 		LEFT JOIN m_sex S
-		ON T.SEX_ID = S.SEX_ID
+		ON T.SEX_ID =
+		S.SEX_ID
 		WHERE
 		T.DEL_FLG = 0
 
@@ -41,40 +43,54 @@
 		</if>
 		<!---->
 		<if test="nyushaDateS > nyushaDateE">
-			AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND #{nyushaDateS}
+			AND T.NYUSHA_DATE BETWEEN #{nyushaDateE} AND
+			#{nyushaDateS}
 		</if>
 		<if test="nyushaDateE > nyushaDateS">
-			AND T.NYUSHA_DATE BETWEEN #{nyushaDateS} AND #{nyushaDateE}
+			AND T.NYUSHA_DATE BETWEEN #{nyushaDateS} AND
+			#{nyushaDateE}
 		</if>
 
 	</select>
 
 	<select id="findAll" resultType="com.kintai.main.entity.EmpInfo">
-		SELECT t1.*, t2.dept_name as DEPT_NAME, t3.sex as SEX_NAME
+		SELECT t1.*, t2.dept_name as
+		DEPT_NAME, t3.sex as SEX_NAME
 		FROM t_employee t1
-		LEFT JOIN m_dept t2 ON t1.dept_id = t2.dept_id
+		LEFT JOIN m_dept t2 ON
+		t1.dept_id = t2.dept_id
 		LEFT JOIN m_sex t3 ON t1.sex_id = t3.sex_id
 		WHERE t1.del_flg =0;
 	</select>
-	
-	<select id="findByRequest" resultType="com.kintai.main.entity.EmpInfo">
-        SELECT t1.*, t2.dept_name as DEPT_NAME, t3.sex as SEX_NAME
-		FROM t_employee t1
+
+	<select id="findByRequest"
+		resultType="com.kintai.main.entity.EmpInfo">
+		SELECT t1.*, t2.dept_name as DEPT_NAME, t3.sex as SEX_NAME
+		FROM
+		t_employee t1
 		LEFT JOIN m_dept t2 ON t1.dept_id = t2.dept_id
-		LEFT JOIN m_sex t3 ON t1.sex_id = t3.sex_id
-		  <where>
-		  	t1.del_flg = 0
-		    <if test="employeeId != null and employeeId != ''">
-		      AND t1.employee_id = #{employeeId}
-		    </if>
-		    <if test="deptId != null and deptId != ''">
-            AND t1.dept_id = #{deptId}
-        	</if>
-		   
-		  </where>
-    </select>
+		LEFT JOIN
+		m_sex t3 ON t1.sex_id = t3.sex_id
+		<where>
+			t1.del_flg = 0
+			<if test="employeeId != null and employeeId != ''">
+				AND t1.employee_id = #{employeeId}
+			</if>
+			<if test="deptId != null and deptId != ''">
+				AND t1.dept_id = #{deptId}
+			</if>
+
+		</where>
+	</select>
 
 
+	<insert id="add">
+		INSERT INTO t_employee
+		(employee_id,employee_name,password,dept_id,sex_id,age,tel_no,mail_address,nyusha_date)
+		VALUES
+		(#{employeeId},#{employeeName},#{password},#{deptId},#{sexId},#{age},#{telNo},#{mailAddress},#{nyushaDate})
+
+	</insert>
 
 
 	<!--削除 -->
@@ -83,7 +99,8 @@
 		T_EMPLOYEE
 		SET
 		DEL_FLG = 1,
-		UPDATE_DATE = CURRENT_TIMESTAMP
+		UPDATE_DATE =
+		CURRENT_TIMESTAMP
 		WHERE
 		EMPLOYEE_ID = #{employeeID}
 

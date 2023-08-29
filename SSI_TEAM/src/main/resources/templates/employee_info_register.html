@@ -49,17 +49,17 @@
     
     <label for="sexId">性別:</label>
     <select id="sexId" name="sexId" th:field="*{sexId}">
-       <option value="none">未確認</option>
-        <option value="male">男性</option>
-        <option value="female">女性</option>
+       <option value="2">未確認</option>
+        <option value="0">男性</option>
+        <option value="1">女性</option>
         
     </select><br><br>
     
     <label for="age">年齢:</label>
-    <input type="text" id="age" name="age" th:field="*{age}" th:value="${''}"><br><br>
+    <input type="text" id="age" name="age" th:field="*{age}"><br><br>
     
     <label for="nyushaDate">入社年月日:</label>
-    <input type="text" id="nyushaDate" name="nyushaDate" th:field="*{nyushaDate}"><br><br>
+    <input type="date" id="nyushaDate" name="nyushaDate" th:field="*{nyushaDate}"><br><br>
     
     
     <label for="telNo">電話番号:</label>
@@ -75,7 +75,7 @@
     <!-- 他の部署情報のプロパティも同様に表示 -->
     
     <button type="submit" th:if="${isUpdate}">更新</button>
-    <button type="submit" th:if="${not isUpdate}">登録</button>
+    <button type="submit" th:if="${isInsert}">登録</button>
     <button type="button" id="closeButton">閉じる</button>
 </form>
 
