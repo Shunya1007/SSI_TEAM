@@ -22,7 +22,7 @@
 			</ul>
 			<ul class="ulList_01">
 				<li><label>入社年月日</label></li>
-				<li class="width_74P"><input id="width_42P" type="date" name="nyushaDateS" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="date" name="nyushaDateE" maxlength = "20" placeholder="YYYY/MM/DD"></li>
+				<li class="width_74P"><input id="width_42P" type="date" name="nyushaDates" maxlength = "20" placeholder="YYYY/MM/DD"> ~ <input id="width_42P" type="date" name="nyushaDatee" maxlength = "20" placeholder="YYYY/MM/DD"></li>
 			</ul>
 		</div>
 		<div class="width_33P">
@@ -86,7 +86,7 @@
 			</tr>
 			<tr th:each="emp : ${empList}">
 				<th ><input type="checkbox" name="chk"  th:value="${emp.employeeId}" ></th>
-				<td th:href="@{/employee/{employee_id}(employee_id=${emp.employeeId})}" th:text="${emp.employeeId}"></td>
+				<td><a th:href="@{/employee/{employee_id}(employee_id=${emp.employeeId})}" th:text="${emp.employeeId}"></a></td>
 				<td th:text="${emp.nyushaDate}"></td>
 				<td th:text="${emp.employeeName}"></td>
 				<td th:text="${emp.sexName}"></td>

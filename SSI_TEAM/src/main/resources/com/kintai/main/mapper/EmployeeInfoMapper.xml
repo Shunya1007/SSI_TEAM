@@ -79,6 +79,21 @@
 			<if test="deptId != null and deptId != ''">
 				AND t1.dept_id = #{deptId}
 			</if>
+			<!--開始が入力、終了が未入力 -->
+		<if test="nyushaDates != null" >
+			AND t1.nyusha_date &gt;= #{nyushaDates}
+		</if>
+		<!--開始が未入力、終了が入力 -->
+		<if test="nyushaDatee != null">
+			AND t1.nyusha_date &lt;= #{nyushaDatee}
+		</if>
+		<!---->
+		<if test="nyushaDates > nyushaDatee">
+			AND t1.nyusha_date BETWEEN #{nyushaDatee} AND #{nyushaDates}
+		</if>
+		<if test="nyushaDatee > nyushaDates">
+			AND t1.nyusha_date BETWEEN #{nyushaDates} AND #{nyushaDatee}
+		</if>
 
 		</where>
 	</select>
